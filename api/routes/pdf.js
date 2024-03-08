@@ -1,11 +1,10 @@
 import express from 'express'
 import  multer from 'multer'
 import {  deletefile, getfiles,  uploadfile } from '../controller/pdfcontroller.js'
-import path from 'path'
 const router=express.Router()
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null,path.resolve(__dirname,"../files") );
+      cb(null,"../files" );
     },
     filename: function (req, file, cb) {
       const uniqueSuffix = Date.now();
