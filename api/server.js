@@ -37,5 +37,5 @@ app.use((err,req,res,next)=>{
     return res.status(statusCode).json({success:false,statusCode,message})
 })
 app.listen(5000,()=>{
-    console.log('server runninng on port 5000')
+    console.log('server runninng on port 5000 ')
 })
