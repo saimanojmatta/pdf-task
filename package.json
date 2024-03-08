@@ -6,14 +6,11 @@
   "type": "module",
   "scripts": {
     "dev": "node api/server.js",
-    "start":"node api/server.js",
-    "build":"npm install && npm install --prefix client && npm run build --prefix client"
+    "start": "node api/server.js",
+    "build": "npm install && npm install --prefix client && npm run build --prefix client"
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^3.1.0"
-  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
