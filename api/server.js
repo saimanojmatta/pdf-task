@@ -5,7 +5,6 @@ import pdfrouter from './routes/pdf.js'
 import authrouter from './routes/authrouter.js'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
-import { verifytoken } from "./utills/verifyuser.js";
 import path from 'path'
 dotenv.config()
 mongoose.connect(process.env.Mongo).then(()=>{
