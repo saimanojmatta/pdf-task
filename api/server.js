@@ -6,12 +6,14 @@ import authrouter from './routes/authrouter.js'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import { verifytoken } from "./utills/verifyuser.js";
+import path from 'path'
 dotenv.config()
 mongoose.connect(process.env.Mongo).then(()=>{
     console.log('Connected to Mongodb!')
 }).catch((err)=>{
     console.log(err)
 })
+const __dirname=path.resolve()
 const app=express()
 app.use(cors({
     origin: 'http://localhost:5173',
@@ -22,8 +24,12 @@ app.use(cookieParser())
 app.use('/files',express.static('files'))
 app.use('/api/auth',authrouter)
 app.use('/api',pdfrouter)
+app.use(express.static(path.join(__dirname,'/client/dist')))
 app.get('/',async(req,res)=>{
     res.send('success!')
+})
+app.get("*",(req,res)=>{
+    res.sendFile(path.join(__dirname,"client","dist","index.html"))
 })
 //errorhandler middleware
 app.use((err,req,res,next)=>{
