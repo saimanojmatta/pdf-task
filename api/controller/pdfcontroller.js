@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 const filedir='./files'
 export const uploadfile=async(req,res,next)=>{
-  console.log(req.file)
+  // console.log(req.file)
   const filename=req.file.filename
  try{
   const PDFdetails=pdfdetails.create({

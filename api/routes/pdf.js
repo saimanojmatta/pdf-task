@@ -4,7 +4,7 @@ import {  deletefile, getfiles,  uploadfile } from '../controller/pdfcontroller.
 const router=express.Router()
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null,"../files" );
+      cb(null,"./files" );
     },
     filename: function (req, file, cb) {
       const uniqueSuffix = Date.now();
