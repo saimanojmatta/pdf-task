@@ -18,11 +18,11 @@ const UploadForm = () => {
 
     const getPdf = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/api/get-files');
+            const res = await axios.get('/api/get-files');
             const existingPdfFiles = await Promise.all(
                 res.data.data.map(async (file) => {
                     try {
-                        await axios.head(`http://localhost:5000/files/${file.pdf}`);
+                        await axios.head(`/api/files/${file.pdf}`);
                         return file; // File exists, keep it in the list
                     } catch (error) {
                         if (error.response.status === 404) {
@@ -39,11 +39,11 @@ const UploadForm = () => {
         }
     };
     const showPdf = (pdf) => {
-        setPdfFile(`http://localhost:5000/files/${pdf}`)
+        setPdfFile(`/api/files/${pdf}`)
       };
       const deletePdf = async (selectedpdf) => {
         try {
-            await axios.delete(`http://localhost:5000/api/delete-file/${encodeURIComponent(selectedpdf)}`);
+            await axios.delete(`/api/delete-file/${encodeURIComponent(selectedpdf)}`);
             setViewPdf((prevViewpdf) => prevViewpdf.filter((pdf) => pdf.pdf !== selectedpdf));
         } catch (err) {
             console.error("Error deleting PDF file: ", err);

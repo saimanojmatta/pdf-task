@@ -7,7 +7,7 @@ const Profile = () => {
   const handlesignout=async()=>{
     try{
       dispatch(signoutstart())
-      const res=await fetch('http://localhost:5000/api/auth/signout',)
+      const res=await fetch('/api/auth/signout',)
       const data=res.json()
       if(data.success===false){
         dispatch(deleteuserfailure(data.message))

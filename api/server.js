@@ -3,7 +3,6 @@ import express from 'express'
 import dotenv from 'dotenv'
 import pdfrouter from './routes/pdf.js'
 import authrouter from './routes/authrouter.js'
-import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import path from 'path'
 dotenv.config()
@@ -14,14 +13,10 @@ mongoose.connect(process.env.Mongo).then(()=>{
 })
 const __dirname=path.resolve()
 const app=express()
-app.use(cors({
-    origin: 'https://pdf-task-s1gk.onrender.com/',
-    credentials: true
-}));
 app.use(express.json())
 app.use(cookieParser())
-app.use('/files',express.static('files'))
 app.use('/api/auth',authrouter)
+app.use('/api/files',express.static('files'))
 app.use('/api',pdfrouter)
 app.use(express.static(path.join(__dirname,'/client/dist')))
 app.get('/',async(req,res)=>{
