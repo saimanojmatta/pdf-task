@@ -28,7 +28,8 @@ export const deletefile=async(req,res,next)=>{
   const filepath=path.join(filedir,filename)
   try {
     if (fs.existsSync(filepath)) {
-      await fs.promises.unlink(filepath); // Use fs.promises.unlink for async/await handling
+      await fs.promises.unlink(filepath); 
+      await pdfdetails.findOneAndDelete({pdf:filename})
       console.log(`${filename} has been deleted successfully.`);
       return res.status(200).json({ message: `${filename} has been deleted successfully.` });
     } else {
